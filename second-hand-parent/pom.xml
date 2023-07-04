@@ -6,7 +6,7 @@
     <artifactId>second-hand-parent</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>second-hand-parent</name>
-    <description>xuecheng-plus-parent</description>
+    <description>second-hand-parent</description>
     <packaging>pom</packaging>
 
     <properties>
