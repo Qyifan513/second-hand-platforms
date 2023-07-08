@@ -1,0 +1,15 @@
+server:
+  servlet:
+    context-path: /content
+  port: 8080
+
+# 日志文件配置路径
+logging:
+  config: classpath:log4j2-dev.xml
+
+swagger:
+  title: "二手平台内容管理系统"
+  description: "内容系统管理系统对商品相关信息进行管理"
+  base-package: com.platforms.content
+  enabled: true
+  version: 1.0.0

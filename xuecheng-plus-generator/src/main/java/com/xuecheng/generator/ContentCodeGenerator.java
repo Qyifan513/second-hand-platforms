@@ -24,7 +24,8 @@ public class ContentCodeGenerator {
 	private static final String DATA_SOURCE_PASSWORD  = "mysql";
 	//生成的表
 	private static final String[] TABLE_NAMES = new String[]{
-			"goods_base"
+			"goods_base",
+			"goods_category"
 	};
 
 	// TODO 默认生成entity，需要生成DTO修改此变量
@@ -68,7 +69,7 @@ public class ContentCodeGenerator {
 		// 包配置
 		PackageConfig pc = new PackageConfig();
 		pc.setModuleName(SERVICE_NAME);
-		pc.setParent("com.xuecheng");
+		pc.setParent("com.platforms");
 
 		pc.setServiceImpl("service.impl");
 		pc.setXml("mapper");
