@@ -5,6 +5,9 @@
     <groupId>com.platforms</groupId>
     <artifactId>second-hand-parent</artifactId>
     <version>0.0.1-SNAPSHOT</version>
+    <modules>
+        <module>../second-hand-media</module>
+    </modules>
     <name>second-hand-parent</name>
     <description>second-hand-parent</description>
     <packaging>pom</packaging>

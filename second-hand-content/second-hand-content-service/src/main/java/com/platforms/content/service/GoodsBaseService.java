@@ -7,6 +7,8 @@ import com.platforms.secondhandbase.MyResult;
 import com.platforms.secondhandbase.PageParams;
 import com.platforms.secondhandbase.PageResult;
 
+import java.util.List;
+
 /**
  * <p>
  * 课程基本信息 服务类
@@ -22,6 +24,12 @@ public interface GoodsBaseService {
      * @param goodsParamsDto 查询条件
      * @return 查询结果
      */
-    public PageResult<GoodsBase> queryCourseBaseList(PageParams pageParams, QueryGoodsParamsDto goodsParamsDto);
-    public MyResult<GoodsBase> load();
+    public PageResult<GoodsBase> queryGoodsBaseList(long school, PageParams pageParams, QueryGoodsParamsDto goodsParamsDto);
+    /**
+     * 商品查询，查询所有商品记录
+     * @return 查询结果
+     */
+    public MyResult<GoodsBase> load(long school);
+
+    public List<GoodsBase> searchByCategoryByMt(String mt);
 }

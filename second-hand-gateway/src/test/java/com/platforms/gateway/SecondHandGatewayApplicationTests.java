@@ -1,0 +1,13 @@
+package com.platforms.gateway;
+
+//import org.junit.jupiter.api.Test;
+//import org.springframework.boot.test.context.SpringBootTest;
+//
+//@SpringBootTest
+//class SecondHandGatewayApplicationTests {
+//
+//    @Test
+//    void contextLoads() {
+//    }
+//
+//}

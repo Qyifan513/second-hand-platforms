@@ -36,9 +36,11 @@ public class QueryGoodsParamsDto {
     }
     //审核状态
     private String auditStatus;
+
     //商品名称
     private String goodsName;
     //状态
     private String status;
-
+    //分类id
+    private String categoryId;
 }

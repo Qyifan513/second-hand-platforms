@@ -12,11 +12,24 @@
         <result column="is_show" property="isShow" />
         <result column="orderby" property="orderby" />
         <result column="is_leaf" property="isLeaf" />
+        <result column="picture" property="picture" />
     </resultMap>
 
     <!-- 通用查询结果列 -->
     <sql id="Base_Column_List">
-        id, name, label, parentid, is_show, orderby, is_leaf
+        id, name, label, parentid, is_show, orderby, is_leaf, picture
     </sql>
+
+    <select id="selectTreeNodes"  parameterType="string" resultType="com.hand.content.model.dto.GoodsCategoryTreeDto">
+        with recursive t1 as (
+            select * from goods_category where id=#{id}
+            union all
+            select t2.* from goods_category t2 inner join t1 on t1.id = t2.parentid
+        )
+        select * from t1
+        ORDER BY
+        t1.parentid, t1.orderby;
+
+    </select>
 
 </mapper>

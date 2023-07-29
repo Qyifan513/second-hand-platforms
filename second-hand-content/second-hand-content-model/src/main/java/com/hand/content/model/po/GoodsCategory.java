@@ -17,7 +17,6 @@ import java.io.Serializable;
 public class GoodsCategory implements Serializable {
 
     private static final long serialVersionUID = 1L;
-
     /**
      * 主键
      */
@@ -52,6 +51,69 @@ public class GoodsCategory implements Serializable {
      * 是否叶子
      */
     private Integer isLeaf;
+    /**
+     * 分类图片
+     */
+    private String picture;
+
+    public GoodsCategory() {
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getLabel() {
+        return label;
+    }
+
+    public void setLabel(String label) {
+        this.label = label;
+    }
+
+    public String getParentid() {
+        return parentid;
+    }
+
+    public void setParentid(String parentid) {
+        this.parentid = parentid;
+    }
+
+    public Integer getIsShow() {
+        return isShow;
+    }
+
+    public void setIsShow(Integer isShow) {
+        this.isShow = isShow;
+    }
+
+    public Integer getOrderby() {
+        return orderby;
+    }
+
+    public void setOrderby(Integer orderby) {
+        this.orderby = orderby;
+    }
+
+    public Integer getIsLeaf() {
+        return isLeaf;
+    }
+
+    public void setIsLeaf(Integer isLeaf) {
+        this.isLeaf = isLeaf;
+    }
 
 
 }

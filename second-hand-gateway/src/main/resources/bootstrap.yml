@@ -1,0 +1,36 @@
+#微服务配置
+spring:
+  application:
+    name: gateway #gateway-dev.yaml
+  cloud:
+    gateway:
+      globalcors:
+        default-filters:
+          - DedupeResponseHeader=Access-Control-Allow-Origin Access-Control-Allow-Credentials, RETAIN_FIRST
+        cors-configurations:
+          '[/**]':
+            allowed-origins: http://127.0.0.1:5173
+            allowed-headers: "*"
+            allow-credentials: true
+            allowed-methods:
+              - GET
+              - POST
+              - DELETE
+              - PUT
+              - OPTION
+    nacos:
+      server-addr: 192.168.101.65:8848
+      discovery:
+        namespace: dev
+        group: second-hand-platforms
+      config:
+        namespace: dev
+        group: second-hand-platforms
+        file-extension: yaml
+        refresh-enabled: true
+        shared-configs:
+          - data-id: logging-${spring.profiles.active}.yaml
+            group: second-hand-common
+            refresh: true
+  profiles:
+    active: dev
