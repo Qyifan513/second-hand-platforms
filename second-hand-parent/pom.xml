@@ -6,7 +6,8 @@
     <artifactId>second-hand-parent</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <modules>
-        <module>../second-hand-media</module>
+        <module>../second-hand-mediaFiles</module>
+        <module>feign-api</module>
     </modules>
     <name>second-hand-parent</name>
     <description>second-hand-parent</description>
@@ -61,6 +62,9 @@
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
+
+
+
             <!-- lombok，简化类的构建-->
             <dependency>
                 <groupId>org.projectlombok</groupId>

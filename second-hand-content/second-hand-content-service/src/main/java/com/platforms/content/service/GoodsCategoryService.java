@@ -28,6 +28,6 @@ public interface GoodsCategoryService{
      *
      * @return
      */
-    List<CategoryWithGoods> queryCategoryWithGoods(String id);
+    List<CategoryWithGoods> queryCategoryWithGoods(long school, String id);
 
 }

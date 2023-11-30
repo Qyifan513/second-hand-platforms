@@ -1,6 +1,7 @@
 package com.platforms.content.service;
 
 
+import com.alibaba.fastjson.JSONObject;
 import com.hand.content.model.dto.QueryGoodsParamsDto;
 import com.hand.content.model.po.GoodsBase;
 import com.platforms.secondhandbase.MyResult;
@@ -8,6 +9,7 @@ import com.platforms.secondhandbase.PageParams;
 import com.platforms.secondhandbase.PageResult;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  * <p>
@@ -32,4 +34,8 @@ public interface GoodsBaseService {
     public MyResult<GoodsBase> load(long school);
 
     public List<GoodsBase> searchByCategoryByMt(String mt);
+    int save(JSONObject param);
+
+    MyResult<Long> getGoodsId(Map<String, Object> columnMap);
+
 }

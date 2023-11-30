@@ -1,12 +1,14 @@
 package com.platforms.content.service.impl;
 
 
+import com.alibaba.fastjson.JSONObject;
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.hand.content.model.dto.QueryGoodsParamsDto;
 import com.hand.content.model.po.GoodsBase;
 import com.platforms.content.mapper.GoodsBaseMapper;
 import com.platforms.content.service.GoodsBaseService;
+import com.platforms.content.service.SchoolService;
 import com.platforms.secondhandbase.MyResult;
 import com.platforms.secondhandbase.PageParams;
 import com.platforms.secondhandbase.PageResult;
@@ -17,6 +19,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  * <p>
@@ -31,6 +34,8 @@ public class GoodsBaseServiceImpl implements GoodsBaseService {
     @Autowired
     GoodsBaseMapper goodsBaseMapper;
 
+    @Autowired
+    SchoolService schoolService;
     @Override
     @Transactional
     public PageResult<GoodsBase> queryGoodsBaseList(long school, PageParams pageParams, QueryGoodsParamsDto goodsParamsDto){
@@ -65,7 +70,7 @@ public class GoodsBaseServiceImpl implements GoodsBaseService {
         //拼装查询条件
         LambdaQueryWrapper<GoodsBase> queryWrapper = new LambdaQueryWrapper<>();
         queryWrapper.eq(GoodsBase::getSchoolId,school);
-        goodsBaseMyResult.setResult(goodsBaseMapper.selectList(queryWrapper));
+        goodsBaseMyResult.setResults(goodsBaseMapper.selectList(queryWrapper));
         goodsBaseMyResult.setCode("1");
         goodsBaseMyResult.setMsg("操作成功");
         return goodsBaseMyResult;
@@ -80,9 +85,53 @@ public class GoodsBaseServiceImpl implements GoodsBaseService {
         //根据课程审核状态查询 course_base.audit_status = ?
 //        queryWrapper.eq(StringUtils.isNotEmpty(courseParamsDto.getAuditStatus()), CourseBase::getAuditStatus,courseParamsDto.getAuditStatus());
         queryWrapper.eq(StringUtils.isNotEmpty(mt),GoodsBase::getMt,mt);
+
         //查询前9条数据 eg.wrapper.last("limit 0,10");
         queryWrapper.last("limit 0,9");
         return goodsBaseMapper.selectList(queryWrapper);
     }
 
+    @Override
+    public int save(JSONObject param) {
+        //todo :校验（名称，创建人）是否唯一
+
+        GoodsBase goodsBase = new GoodsBase();
+        goodsBase.setName(param.getString("name"));
+        goodsBase.setDescription(param.getString("desc"));
+        goodsBase.setSchoolName(param.getString("school"));
+        goodsBase.setCreatePeople((String) param.get("create_people"));
+//        String school = param.getString("school");
+//        LambdaQueryWrapper<School> queryWrapper = new LambdaQueryWrapper<>();
+//        queryWrapper.eq(StringUtils.isNotEmpty(school),School::getName,school);
+//        Map<String, Object> map = schoolService.getMap(queryWrapper);
+//        Long schoolId = (Long) map.get("id");
+        Long schoolId = schoolService.getSchoolId(param);
+        goodsBase.setSchoolId(schoolId);
+        return goodsBaseMapper.insert(goodsBase);
+    }
+
+    @Override
+    public MyResult<Long> getGoodsId(Map<String, Object> columnMap) {
+        MyResult<Long> longMyResult = new MyResult<>();
+        List<GoodsBase> goodsBases = goodsBaseMapper.selectByMap(columnMap);
+        if(goodsBases.size() != 1){
+            longMyResult.setCode("-1");
+            longMyResult.setMsg("失败");
+            return longMyResult;
+        }
+        longMyResult.setResult(goodsBases.get(0).getId());
+        return longMyResult;
+    }
+
+//    @Override
+//    public Long getSchoolId(JSONObject param){
+//        String school = param.getString("school");
+//        //添加学校id
+//        //拼装查询条件
+//        LambdaQueryWrapper<School> queryWrapper = new LambdaQueryWrapper<>();
+//        queryWrapper.eq(StringUtils.isNotEmpty(school),School::getName,school);
+//        Map<String, Object> map = schoolService.getMap(queryWrapper);
+//        Long schoolId = (Long) map.get("id");
+//        return schoolId;
+//    }
 }

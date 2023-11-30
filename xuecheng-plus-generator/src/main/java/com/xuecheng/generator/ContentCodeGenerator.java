@@ -16,16 +16,17 @@ import java.util.Arrays;
 public class ContentCodeGenerator {
 
 	// TODO 修改服务名以及数据表名
+//	private static final String SERVICE_NAME = "media";
 	private static final String SERVICE_NAME = "content";
 
 	//数据库账号
 	private static final String DATA_SOURCE_USER_NAME  = "root";
 	//数据库密码
 	private static final String DATA_SOURCE_PASSWORD  = "mysql";
+//	private static final String DATA_SOURCE_PASSWORD  = "root";
 	//生成的表
 	private static final String[] TABLE_NAMES = new String[]{
-			"goods_base",
-			"goods_category"
+			"school",
 	};
 
 	// TODO 默认生成entity，需要生成DTO修改此变量
@@ -60,6 +61,8 @@ public class ContentCodeGenerator {
 		dsc.setDbType(DbType.MYSQL);
 		dsc.setUrl("jdbc:mysql://192.168.101.65:3306/es_" + SERVICE_NAME
 				+ "?serverTimezone=UTC&useUnicode=true&useSSL=false&characterEncoding=utf8");
+//		dsc.setUrl("jdbc:mysql://127.0.0.1/" + SERVICE_NAME
+//				+ "?serverTimezone=UTC&useUnicode=true&useSSL=false&characterEncoding=utf8");
 //		dsc.setDriverName("com.mysql.jdbc.Driver");
 		dsc.setDriverName("com.mysql.cj.jdbc.Driver");
 		dsc.setUsername(DATA_SOURCE_USER_NAME);
@@ -70,6 +73,7 @@ public class ContentCodeGenerator {
 		PackageConfig pc = new PackageConfig();
 		pc.setModuleName(SERVICE_NAME);
 		pc.setParent("com.platforms");
+//		pc.setParent("com.hand");
 
 		pc.setServiceImpl("service.impl");
 		pc.setXml("mapper");

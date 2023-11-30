@@ -44,7 +44,7 @@ public class UserDetailsImpl implements UserDetailsService {
         XcUserExt xcUserExt = authService.execute(authParamsDto);
 
         return getUserPrincipal(xcUserExt);
-           }
+    }
     /**
      * @description 查询用户信息
      * @param xcUser  用户id，主键

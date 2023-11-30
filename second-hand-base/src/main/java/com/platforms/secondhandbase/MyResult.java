@@ -4,6 +4,7 @@ import lombok.Data;
 import lombok.ToString;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
 @Data
@@ -13,8 +14,12 @@ public class MyResult<T> implements Serializable{
     private String code = "";
     //返回信息
     private String msg = "";
+
+    private String url = "";
     // 数据列表
-    private List<T> result;
+    private List<T> results;
+
+    private T result;
 
     public String getCode() {
         return code;
@@ -32,20 +37,21 @@ public class MyResult<T> implements Serializable{
         this.msg = msg;
     }
 
-    public List<T> getResult() {
-        return result;
+    public List<T> getResults() {
+        return results;
     }
 
-    public void setResult(List<T> result) {
-        this.result = result;
+    public void setResults(List<T> results) {
+        this.results = results;
     }
 
-    public MyResult(String code, String msg, List<T> result) {
+    public MyResult(String code, String msg, List<T> results) {
         this.code = code;
         this.msg = msg;
-        this.result = result;
+        this.results = results;
     }
 
     public MyResult() {
+        results = new ArrayList<T>();
     }
 }

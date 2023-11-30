@@ -1,0 +1,57 @@
+server:
+  servlet:
+    context-path: /media
+  port: 8086
+spring:
+  application:
+    name: media-service
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://127.0.0.1:3306/media?useUnicode=true&characterEncoding=utf8&useSSL=false&allowMultiQueries=true
+    username: root
+    password: root
+  profiles:
+    active: dev
+  cloud:
+    nacos:
+      server-addr: 192.168.101.65:8848
+      discovery:
+        namespace: dev
+        group: second-hand-platforms
+      config:
+        namespace: dev
+        group: second-hand-platforms
+        file-extension: yaml
+        refresh-enabled: true
+        shared-configs:
+          - data-id: swagger-${spring.profiles.active}.yaml
+            group: second-hand-common
+            refresh: true
+          - data-id: logging-${spring.profiles.active}.yaml
+            group: second-hand-common
+            refresh: true
+#minio:
+#  endpoint: http://192.168.101.65:9001
+#  accessKey: minioadmin
+#  secretKey: minioadmin
+#  bucket:
+#    files: mediafiles
+#    videofiles: video
+picture:
+  path: D:\img\
+
+org:
+  dromara:
+    hmily :
+      serializer : kryo
+      recoverDelayTime : 30
+      retryMax : 30
+      scheduledDelay : 30
+      scheduledThreadMax :  10
+      repositorySupport : db
+      started: true
+      hmilyDbConfig :
+        driverClassName  : com.mysql.jdbc.Driver
+        url :  jdbc:mysql://localhost:3306/hmily?useUnicode=true
+        username : root
+        password : mysql

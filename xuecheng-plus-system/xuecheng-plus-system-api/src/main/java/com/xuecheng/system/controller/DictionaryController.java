@@ -19,7 +19,7 @@ import java.util.List;
  */
 @Slf4j
 @RestController
-public class DictionaryController  {
+public class DictionaryController {
 
     @Autowired
     private DictionaryService  dictionaryService;

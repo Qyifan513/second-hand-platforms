@@ -21,8 +21,8 @@ public class GoodsBaseInfoServiceTests {
     @Autowired
     GoodsBaseService goodsBaseService;
 
-    @Autowired
-    GoodsBaseMapper goodsBaseMapper;
+//    @Autowired
+//    GoodsBaseMapper goodsBaseMapper;
 
     @Autowired
     GoodsCategoryService goodsCategoryService;
@@ -42,7 +42,7 @@ public class GoodsBaseInfoServiceTests {
     }
     @Test
     void testGoodsCategoryService() {
-        System.out.println(goodsCategoryService.queryCategoryWithGoods("1"));
+//        System.out.println(goodsCategoryService.queryCategoryWithGoods("1"));
     }
 
     @Test

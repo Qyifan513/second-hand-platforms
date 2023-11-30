@@ -61,7 +61,7 @@ public class GoodsBase implements Serializable {
     private String description;
 
     /**
-     * 商品图片
+     * 商品图片索引
      */
     private String picture;
 

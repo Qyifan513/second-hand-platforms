@@ -19,6 +19,7 @@ public class GoodsCategoryTreeDto extends GoodsCategory implements java.io.Seria
         this.setOrderby(dto.getOrderby());
         this.setParentid(dto.getParentid());
         this.setChildrenTreeNodes(dto.getChildrenTreeNodes());
+        this.setPicture(dto.getPicture());
     }
 
     public List<GoodsCategoryTreeDto> getChildrenTreeNodes() {

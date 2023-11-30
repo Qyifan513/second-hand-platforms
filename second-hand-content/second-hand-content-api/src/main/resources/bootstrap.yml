@@ -1,4 +1,4 @@
-##微服务配置
+
 #server:
 #  servlet:
 #    context-path: /content
@@ -7,7 +7,7 @@
 #  application:
 #    name: content-api #content-api-dev.yaml
 #  profiles:
-#    active: dev   #环境名
+#    active: dev
 #  cloud:
 #    nacos:
 #      server-addr: 192.168.101.65:8848
@@ -23,7 +23,7 @@ spring:
   application:
     name: content-api #content-api-dev.yaml
   profiles:
-    active: dev   #环境名
+    active: dev
   cloud:
     nacos:
       server-addr: 192.168.101.65:8848
@@ -50,12 +50,29 @@ spring:
 #    username: root
 #    password: mysql
 
-logging:
-  config: classpath:log4j2-dev.xml
+#logging:
+#  config: classpath:log4j2-dev.xml
+#
+#swagger:
+#  title: "二手平台内容管理系统"
+#  description: "内容系统管理系统对商品相关信息进行管理"
+#  base-package: com.platforms.content
+#  enabled: true
+#  version: 1.0.0
 
-swagger:
-  title: "二手平台内容管理系统"
-  description: "内容系统管理系统对商品相关信息进行管理"
-  base-package: com.platforms.content
-  enabled: true
-  version: 1.0.0
+#
+#org:
+#  dromara:
+#    hmily :
+#      serializer : kryo
+#      recoverDelayTime : 30
+#      retryMax : 30
+#      scheduledDelay : 30
+#      scheduledThreadMax :  10
+#      repositorySupport : db
+#      started: true
+#      hmilyDbConfig :
+#        driverClassName  : com.mysql.jdbc.Driver
+#        url :  jdbc:mysql://localhost:3306/hmily?useUnicode=true
+#        username : root
+#        password : mysql

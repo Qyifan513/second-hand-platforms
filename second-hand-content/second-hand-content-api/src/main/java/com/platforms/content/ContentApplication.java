@@ -1,16 +1,17 @@
 package com.platforms.content;
 
 
+import com.platforms.feign.clients.MediaClient;
 import com.spring4all.swagger.EnableSwagger2Doc;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.context.annotation.Bean;
-import org.springframework.web.cors.CorsConfiguration;
-import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
-import org.springframework.web.filter.CorsFilter;
+import org.springframework.cloud.openfeign.EnableFeignClients;
+
 
 @EnableSwagger2Doc
 @SpringBootApplication
+@EnableFeignClients(basePackageClasses=MediaClient.class)
+//@ComponentScan({"com.platforms.content","org.dromara.hmily"})
 //@SpringBootApplication(exclude= {DataSourceAutoConfiguration.class})
 public class ContentApplication {
 //    @Bean
@@ -31,6 +32,11 @@ public class ContentApplication {
 //        source.registerCorsConfiguration("/**", config);
 //        return new CorsFilter(source);
 //    }
+//@Bean
+//public MediaClient mediaClient() {
+//    // 在这里创建 MediaClient 实例并返回
+//    return new MediaClient();
+//}
     public static void main(String[] args) {
         SpringApplication.run(ContentApplication.class, args);
     }
